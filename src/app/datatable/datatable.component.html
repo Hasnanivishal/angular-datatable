@@ -1,0 +1,26 @@
+<div>
+  <table class="table">
+    <thead>
+      <th *ngFor="let ico of propName | keyvalue" scope="col">
+        {{ ico.value }}
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ico of pagedItems ">
+        <td *ngFor="let ico2 of propName ">{{ ico[ico2] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<span *ngIf="pager.pages && pager.pages.length > 1" class="text-right text-lighter pr-2">Page {{pager.currentPage}}
+  of {{ pager.pages.length }}</span>
+
+  Total Items : {{totalItems}}
+
+
+<nav *ngIf="pager.pages && pager.pages.length > 1" class="text-right">
+  <button (click)="loadLess()">Prev</button>
+  <button (click)="loadMore()">Next</button>
+
+</nav>
