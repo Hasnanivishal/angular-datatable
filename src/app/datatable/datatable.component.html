@@ -1,8 +1,8 @@
 <div>
-  <table class="table">
-    <thead>
+  <table class="table table-striped">
+    <thead class="thead-dark">
       <th *ngFor="let ico of propName | keyvalue" scope="col">
-        {{ ico.value }}
+         {{ ico.value }}
       </th>
     </thead>
     <tbody>
@@ -13,14 +13,22 @@
   </table>
 </div>
 
-<span *ngIf="pager.pages && pager.pages.length > 1" class="text-right text-lighter pr-2">Page {{pager.currentPage}}
-  of {{ pager.pages.length }}</span>
+<!-- <span *ngIf="pager.pages && pager.pages.length > 1" class="text-right text-lighter pr-2">Showing Page {{pager.currentPage}}
+  of {{ pager.pages.length }}</span> -->
 
-  Total Items : {{totalItems}}
+  <div>
+      <span>Showing {{pagedItems[0]._index}} to {{pagedItems[pagedItems.length-1]._index}} of {{totalItems}} entries</span>
 
 
-<nav *ngIf="pager.pages && pager.pages.length > 1" class="text-right">
-  <button (click)="loadLess()">Prev</button>
-  <button (click)="loadMore()">Next</button>
+      <nav *ngIf="pager.pages && pager.pages.length > 1" class="text-right">
+        <button (click)="loadLess()">Prev</button>
+        <button (click)="loadMore()">Next</button>
+      </nav>
+  </div>
 
-</nav>
+
+  <div>
+    Page {{pager.currentPage}}
+  </div>
+
+

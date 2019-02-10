@@ -24,6 +24,7 @@ export class DatatableComponent {
 
   currentPage: any;
   totalItems: any;
+  index : any = 1;
 
 
   constructor(private pagerService:PagerService)
@@ -34,13 +35,18 @@ export class DatatableComponent {
   ngOnInit()
   {
     setTimeout(() => {
-      this.setPage(1);
+      
       this.totalItems = this.sampleData.length;
+      this.sampleData.forEach(element => {
+        element._index = this.index++;
+      });
+      this.setPage(1);
     });
   }
 
 
   setPage(page: number) {
+    debugger;
     // get pager object from service
     this.pager = this.pagerService.getPager(this.sampleData.length, page, this.itemPerPage);
 
