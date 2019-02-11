@@ -5,13 +5,13 @@ import { PagerService } from '../pager.service';
   selector: 'app-datatable',
   templateUrl: './datatable.component.html'
 })
-export class DatatableComponent {
+export class DatatableComponent implements OnInit {
 
   @Input()
-  sampleData : any;
+  sampleData: any;
 
   @Input()
-  itemPerPage : any;
+  itemPerPage: any;
 
   // pager object
   pager: any = {};
@@ -24,20 +24,17 @@ export class DatatableComponent {
 
   currentPage: any;
   totalItems: any;
-  index : any = 1;
+  index: any = 1;
 
 
-  constructor(private pagerService:PagerService)
-  {
+  constructor(private pagerService: PagerService) {
     this.currentPage = 1;
   }
 
-  ngOnInit()
-  {
+  ngOnInit() {
     setTimeout(() => {
-      
       this.totalItems = this.sampleData.length;
-      this.sampleData.forEach(element => {
+      this.sampleData.forEach((element: { _index: number; }) => {
         element._index = this.index++;
       });
       this.setPage(1);
@@ -46,19 +43,17 @@ export class DatatableComponent {
 
 
   setPage(page: number) {
-    debugger;
     // get pager object from service
     this.pager = this.pagerService.getPager(this.sampleData.length, page, this.itemPerPage);
 
     // get current page of items
     this.pagedItems = this.sampleData.slice(this.pager.startIndex, this.pager.endIndex + 1);
 
-    //get object property name
+    // get object property name
     this.propName = Object.getOwnPropertyNames(this.sampleData[0]);
+    this.propName.pop();
   }
-  
 
-  
   loadMore() {
     if (this.currentPage < this.pager.pages.length) {
       this.currentPage = this.currentPage + 1;

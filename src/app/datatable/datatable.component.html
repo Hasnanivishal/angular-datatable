@@ -1,13 +1,11 @@
 <div>
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <th *ngFor="let ico of propName | keyvalue" scope="col">
-         {{ ico.value }}
-      </th>
+  <table>
+    <thead>
+      <th *ngFor="let ico of propName | keyvalue"> {{ ico.value }} </th>
     </thead>
     <tbody>
       <tr *ngFor="let ico of pagedItems ">
-        <td *ngFor="let ico2 of propName ">{{ ico[ico2] }}</td>
+        <td *ngFor="let ico2 of propName "> {{ ico[ico2] }} </td>
       </tr>
     </tbody>
   </table>
@@ -16,19 +14,14 @@
 <!-- <span *ngIf="pager.pages && pager.pages.length > 1" class="text-right text-lighter pr-2">Showing Page {{pager.currentPage}}
   of {{ pager.pages.length }}</span> -->
 
-  <div>
-      <span>Showing {{pagedItems[0]._index}} to {{pagedItems[pagedItems.length-1]._index}} of {{totalItems}} entries</span>
+<div>
+  <span *ngIf="pagedItems" >Showing {{pagedItems[0]._index}} to {{pagedItems[pagedItems.length-1]._index}} of {{totalItems}} entries</span>
+  <nav *ngIf="pager.pages && pager.pages.length > 1" class="text-right">
+    <button (click)="loadLess()">Prev</button>
+    <button (click)="loadMore()">Next</button>
+  </nav>
+</div>
 
-
-      <nav *ngIf="pager.pages && pager.pages.length > 1" class="text-right">
-        <button (click)="loadLess()">Prev</button>
-        <button (click)="loadMore()">Next</button>
-      </nav>
-  </div>
-
-
-  <div>
-    Page {{pager.currentPage}}
-  </div>
-
-
+<div>
+  Page {{pager.currentPage}}
+</div>
