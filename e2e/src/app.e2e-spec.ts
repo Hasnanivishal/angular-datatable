@@ -9,6 +9,6 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to ang-data-table!');
+    expect(page.getTitleText()).toEqual('Welcome to AngularDataTableLibrary!');
   });
 });
