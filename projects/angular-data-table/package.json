@@ -1,0 +1,25 @@
+{
+  "name": "angular-data-table",
+  "version": "0.0.1", 
+  "description":"A simple datatable for Angular.",
+  "author": "Vishal Hasnani (hasnanivishal@gmail.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hasnanivishal/angular-datatable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Hasnanivishal/angular-datatable/issues"
+  },
+  "homepage": "https://github.com/Hasnanivishal/angular-datatable",
+  "keywords": [
+    "angular",
+    "javascript",
+    "typescript",
+    "datatable"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^7.1.0",
+    "@angular/core": "^7.1.0"
+  }
+}
