@@ -1,27 +1,93 @@
-# AngularDataTableLibrary
+# Angular DataTable
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+* A simple datatable that can be used in your component.
+* It is developed using `Angular >=7.0.0` and its newly introduced `ng g library` schematics.
+* Library location: `projects/angular-data-table` directory of this repository.
 
-## Development server
+## Examples/Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* A simple Example can be found under `src/app` directory of this repository.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`npm i angular-data-table-library`
 
-## Build
+## API
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+`import { AngularDataTableModule } from 'angular-data-table-library''`<br>
+`selector: ang-data-table`
 
-## Running unit tests
+### @Inputs()
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+| Input            | Type    | Required                   | Description                                                                                               |
+| ---------------- | ------- | -------------------------- | --------------------------------------------------------------------------------------------------------- |
+| sampleData            | object  | **YES**                    | array of objects that need to be shown in the data table .                                               |
+| itemPerPage        | number  | Optional, default: 12     | items to be shown on each page.                                                                       |
+                                                |
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Usage
 
-## Further help
+1) Register the `AngularDataTableModule` in your app module.
+ > `import { AngularDataTableModule } from 'angular-data-table-library'`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ ```typescript
+ import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule, MatInputModule } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularDataTableModule } from 'angular-data-table-library';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    HttpClientModule,
+    AngularDataTableModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+ ```
+
+ 2) Use the directive `(ang-data-table)` in your component.
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AppService } from './app.service';
+@Component({
+  selector: 'mat-ta-root',
+  template: `
+  <ang-data-table [sampleData]='data' [itemPerPage]='dataPerPage'>
+`,
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+ 
+
+  ngOnInit() {
+    let data = {
+          [key1: value, key2: value],
+          [key1: value, key2: value],
+          [key1: value, key2: value]
+      } 
+    let dataPerPage = 6;
+  }
+
+}
+```
+
+
+**Thanks for Installing**
+
+> Conatct me for any suggestion/issues -> hasnanivishal@gmail.com
