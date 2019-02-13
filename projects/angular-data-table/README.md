@@ -7,6 +7,7 @@
 ## Examples/Demo
 
 * A simple Example can be found under `src/app` directory of this repository.
+* Live Demo [Example](https://stackblitz.com/edit/angular-m3yj64)
 
 ## Installation
 
@@ -14,7 +15,7 @@
 
 ## API
 
-`import { AngularDataTableModule } from 'angular-data-table-library''`<br>
+`import { AngularDataTableModule } from 'angular-data-table-library'`<br>
 `selector: ang-data-table`
 
 ### @Inputs()

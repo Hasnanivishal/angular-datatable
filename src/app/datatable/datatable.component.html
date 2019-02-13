@@ -1,3 +1,21 @@
+
+<div class="header">
+  <div class="playerTwo"  *ngIf="pagedItems">Show  
+    <select>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="58">25</option>
+      <option value="100">100</option>
+    </select> entries
+  </div>
+
+  <div  class="playerOne" *ngIf="pager.pages && pager.pages.length > 1">
+    Search: <input type="text">
+  </div>
+</div>
+
+
+
 <div style="overflow-x:auto;">
   <table>
     <thead>
@@ -15,7 +33,7 @@
   of {{ pager.pages.length }}</span> -->
 
 <br />
-<div class="header">
+<div class="header" style="overflow-x:auto;">
   <div class="playerTwo"  *ngIf="pagedItems">Showing {{pagedItems[0]._index}} to {{pagedItems[pagedItems.length-1]._index}} of
     {{totalItems}} entries</div>
 
@@ -28,7 +46,6 @@
 <div class="center">
   Page {{pager.currentPage}}
 </div>
-
 
 
 

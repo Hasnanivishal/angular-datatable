@@ -37,7 +37,6 @@ export class DatatableComponent implements OnInit {
       this.sampleData.forEach((element: { _index: number; }) => {
         element._index = this.index++;
       });
-      console.log("data", this.sampleData)
       this.setPage(1);
     });
   }
