@@ -1,4 +1,4 @@
-<div>
+<div style="overflow-x:auto;">
   <table>
     <thead>
       <th *ngFor="let ico of propName | keyvalue"> {{ ico.value }} </th>
@@ -14,14 +14,87 @@
 <!-- <span *ngIf="pager.pages && pager.pages.length > 1" class="text-right text-lighter pr-2">Showing Page {{pager.currentPage}}
   of {{ pager.pages.length }}</span> -->
 
-<div>
-  <span *ngIf="pagedItems" >Showing {{pagedItems[0]._index}} to {{pagedItems[pagedItems.length-1]._index}} of {{totalItems}} entries</span>
-  <nav *ngIf="pager.pages && pager.pages.length > 1" class="text-right">
-    <button (click)="loadLess()">Prev</button>
-    <button (click)="loadMore()">Next</button>
-  </nav>
+<br />
+<div class="header">
+  <div class="playerTwo"  *ngIf="pagedItems">Showing {{pagedItems[0]._index}} to {{pagedItems[pagedItems.length-1]._index}} of
+    {{totalItems}} entries</div>
+
+  <div  class="playerOne" *ngIf="pager.pages && pager.pages.length > 1">
+    <button class="button button2" (click)="loadLess()">Previous</button>
+    <button class="button button2" (click)="loadMore()">Next</button>
+  </div>
 </div>
 
-<div>
+<div class="center">
   Page {{pager.currentPage}}
 </div>
+
+
+
+
+
+<style>
+  table,
+  td,
+  th {
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 15px;
+  }
+
+  th {
+    background-color: #1a4069;
+    color: white;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  .button {
+    background-color: #1a4069;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+  }
+
+  .button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .center {
+    text-align: center;
+  }
+
+
+  .header {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .playerOne {
+    float: right;
+  }
+
+  .playerTwo {
+    float: left;
+  }
+</style>
