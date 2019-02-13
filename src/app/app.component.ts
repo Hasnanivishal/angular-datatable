@@ -10,10 +10,10 @@ export class AppComponent {
   sampleData = [
     {id: 1, name: "a"},
     {id: 2, name: "b"},
-    {id: 3, name: "c"},
-    {id: 4, name: "d"},
-    {id: 5, name: "e"},
+    {id: 5, name: "c"},
     {id: 6, name: "f"},
+    {id: 4, name: "e"},
+    {id: 3, name: "d"},
     {id: 7, name: "g"},
     {id: 8, name: "h"}
   ]

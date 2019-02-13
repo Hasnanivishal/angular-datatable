@@ -25,6 +25,7 @@ export class DatatableComponent implements OnInit {
   currentPage: any;
   totalItems: any;
   index: any = 1;
+  sortOrder: boolean;
 
 
   constructor(private pagerService: PagerService) {
@@ -34,15 +35,38 @@ export class DatatableComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.totalItems = this.sampleData.length;
-      this.sampleData.forEach((element: { _index: number; }) => {
-        element._index = this.index++;
-      });
       this.setPage(1);
     });
   }
 
+  Sorting(fieldName: any, sortOrder: boolean) {
+    if (sortOrder) {
+      this.sampleData.sort(function (objectOne: any, objectTwo: any) {
+        if (objectOne[fieldName] < objectTwo[fieldName]) { return -1; }
+        if (objectOne[fieldName] > objectTwo[fieldName]) { return 1; }
+        return 0;
+      });
+    } else {
+      this.sampleData.sort(function (objectOne: any, objectTwo: any) {
+        if (objectOne[fieldName] > objectTwo[fieldName]) { return -1; }
+        if (objectOne[fieldName] < objectTwo[fieldName]) { return 1; }
+        return 0;
+      });
+    }
+
+
+    console.log(this.sampleData);
+
+    this.setPage(this.currentPage);
+  }
 
   setPage(page: number) {
+    this.index = 1;
+
+    this.sampleData.forEach((element: { _index: number; }) => {
+      element._index = this.index++;
+    });
+    
     // get pager object from service
     this.pager = this.pagerService.getPager(this.sampleData.length, page, this.itemPerPage);
 

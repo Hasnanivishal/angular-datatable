@@ -1,6 +1,5 @@
-
 <div class="header">
-  <div class="playerTwo"  *ngIf="pagedItems">Show  
+  <div class="playerTwo" *ngIf="pagedItems">Show
     <select>
       <option value="10">10</option>
       <option value="15">15</option>
@@ -9,7 +8,7 @@
     </select> entries
   </div>
 
-  <div  class="playerOne" *ngIf="pager.pages && pager.pages.length > 1">
+  <div class="playerOne" *ngIf="pager.pages && pager.pages.length > 1">
     Search: <input type="text">
   </div>
 </div>
@@ -19,11 +18,12 @@
 <div style="overflow-x:auto;">
   <table>
     <thead>
-      <th *ngFor="let ico of propName | keyvalue"> {{ ico.value }} </th>
+      <th *ngFor="let ico of propName | keyvalue" (click)="Sorting(ico.value, !sortOrder)" (click)="sortOrder = !sortOrder">
+        {{ ico.value }} <i class="fas fa-sort"></i></th>
     </thead>
     <tbody>
       <tr *ngFor="let ico of pagedItems ">
-        <td *ngFor="let ico2 of propName "> {{ ico[ico2] }} </td>
+        <td *ngFor="let ico2 of propName"> {{ ico[ico2] }} </td>
       </tr>
     </tbody>
   </table>
@@ -34,10 +34,11 @@
 
 <br />
 <div class="header" style="overflow-x:auto;">
-  <div class="playerTwo"  *ngIf="pagedItems">Showing {{pagedItems[0]._index}} to {{pagedItems[pagedItems.length-1]._index}} of
+  <div class="playerTwo" *ngIf="pagedItems">Showing {{pagedItems[0]._index}} to
+    {{pagedItems[pagedItems.length-1]._index}} of
     {{totalItems}} entries</div>
 
-  <div  class="playerOne" *ngIf="pager.pages && pager.pages.length > 1">
+  <div class="playerOne" *ngIf="pager.pages && pager.pages.length > 1">
     <button class="button button2" (click)="loadLess()">Previous</button>
     <button class="button button2" (click)="loadMore()">Next</button>
   </div>
@@ -114,4 +115,6 @@
   .playerTwo {
     float: left;
   }
+
+
 </style>
