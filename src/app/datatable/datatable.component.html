@@ -1,14 +1,13 @@
 <div class="header">
   <div class="two" *ngIf="pagedItems">Show
-    <select>
+    <select (change)="filter($event.target.value)">
       <option value="10">10</option>
-      <option value="15">15</option>
-      <option value="58">25</option>
+      <option value="25">25</option>
       <option value="100">100</option>
     </select> entries
   </div>
 
-  <div class="one" *ngIf="pager.pages && pager.pages.length > 1">
+  <div class="one">
     Search: <input type="text">
   </div>
 </div>

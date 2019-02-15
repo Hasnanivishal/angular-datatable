@@ -22,9 +22,9 @@
 
 | Input            | Type    | Required                   | Description                                                                                               |
 | ---------------- | ------- | -------------------------- | --------------------------------------------------------------------------------------------------------- |
-| sampleData            | object  | **YES**                    | array of objects that need to be shown in the data table .                                               |
+| data            | object  | **YES**                    | array of objects that need to be shown in the data table .                                               |
 | itemPerPage        | number  | Optional, default: 12     | items to be shown on each page.                                                                       |
-                                                |
+                                                
 
 
 ## Usage
@@ -69,7 +69,7 @@ import { AppService } from './app.service';
 @Component({
   selector: 'mat-ta-root',
   template: `
-  <ang-data-table [sampleData]='data' [itemPerPage]='dataPerPage'>
+  <ang-data-table [data]='data' [itemPerPage]='dataPerPage'>
 `,
   styleUrls: ['./app.component.css']
 })

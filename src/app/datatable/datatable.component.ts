@@ -55,6 +55,12 @@ export class DatatableComponent implements OnInit {
     this.setPage(this.currentPage);
   }
 
+  filter(itemPerPage: any) {
+      debugger;
+      this.itemPerPage = itemPerPage;
+      this.setPage(this.currentPage);
+  }
+
   setPage(page: number) {
     this.index = 1;
     this.data.forEach((element: { _index: number; }) => {
