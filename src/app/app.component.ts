@@ -16,5 +16,6 @@ export class AppComponent {
     {id: 3, name: "d"},
     {id: 7, name: "g"},
     {id: 8, name: "h"}
-  ]
+  ];
+  color: any = 'DarkRed';
 }

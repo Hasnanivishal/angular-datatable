@@ -1,4 +1,4 @@
-<div class="header">
+<!-- <div class="header">
   <div class="two" *ngIf="pagedItems">Show
     <select>
       <option value="10">10</option>
@@ -11,14 +11,14 @@
   <div class="one" *ngIf="pager.pages && pager.pages.length > 1">
     Search: <input type="text">
   </div>
-</div>
+</div> -->
 
 
 <div style="overflow-x:auto;">
   <table>
     <thead>
-      <th *ngFor="let prop of propName | keyvalue">
-        {{ prop.value }} <i class="fa fa-sort" (click)="Sorting(prop.value, !sortOrder)" (click)="sortOrder = !sortOrder"></i></th>
+      <th *ngFor="let prop of propName | keyvalue" [style.background-color]="bgColor">
+        {{ prop.value | titlecase  }} <i class="fa fa-sort" (click)="Sorting(prop.value, !sortOrder)" (click)="sortOrder = !sortOrder"></i></th>
     </thead>
     <tbody>
       <tr *ngFor="let item of pagedItems ">
@@ -35,8 +35,8 @@
     {{totalItems}} entries</div>
 
   <div class="one" *ngIf="pager.pages && pager.pages.length > 1">
-    <button class="button button2" (click)="previousPage()">Previous</button>
-    <button class="button button2" (click)="nextPage()">Next</button>
+    <button class="button button2" [style.background-color]="bgColor" (click)="previousPage()">Previous</button>
+    <button class="button button2" [style.background-color]="bgColor" (click)="nextPage()">Next</button>
   </div>
 </div>
 
@@ -66,7 +66,7 @@
   }
 
   th {
-    background-color: #1a4069;
+    /* background-color: #24292e; */
     color: white;
   }
 
@@ -75,7 +75,7 @@
   }
 
   .button {
-    background-color: #1a4069;
+    /* background-color: #24292e; */
     border: none;
     color: white;
     padding: 10px 24px;

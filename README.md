@@ -1,5 +1,19 @@
 # Angular DataTable
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/angular-data-table-library">
+    <img src="https://img.shields.io/npm/dm/angular-data-table-library.svg?style=flat" alt="downloads">
+  </a>
+ 
+  <a href="https://badge.fury.io/for/js/angular-data-table-library">
+    <img src="https://badge.fury.io/js/angular-data-table-library.svg" alt="npm version" height="18">
+  </a>
+  
+  <a href="https://david-dm.org/hasnanivishal/angular-data-table-library" title="dependencies status">
+    <img src="https://david-dm.org/hasnanivishal/angular-data-table-library.svg" height="18">
+  </a>
+</p>
+
 * A simple datatable that can be used in your component.
 * It is developed using `Angular >=7.0.0` and its newly introduced `ng g library` schematics.
 * Library location: `projects/angular-data-table` directory of this repository.
@@ -24,7 +38,7 @@
 | ---------------- | ------- | -------------------------- | --------------------------------------------------------------------------------------------------------- |
 | sampleData            | object  | **YES**                    | array of objects that need to be shown in the data table .                                               |
 | itemPerPage        | number  | Optional, default: 12     | items to be shown on each page.                                                                       |
-                                                |
+| color        | string  | Optional, default: Black     | set color of table header and button, [color list](https://www.w3schools.com/cssref/css_colors.asp)                                                                      |
 
 
 ## Usage
@@ -67,9 +81,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AppService } from './app.service';
 @Component({
-  selector: 'mat-ta-root',
+  selector: 'angDataTable',
   template: `
-  <ang-data-table [sampleData]='data' [itemPerPage]='dataPerPage'>
+  <ang-data-table [sampleData]='data' [itemPerPage]='dataPerPage' [color]='color'>
 `,
   styleUrls: ['./app.component.css']
 })
@@ -83,10 +97,23 @@ export class AppComponent implements OnInit {
           [key1: value, key2: value]
       } 
     let dataPerPage = 6;
+    let color = 'Blue';
   }
 
 }
 ```
+
+## Test
+
+Run tests
+
+```
+npm test
+```
+
+## License
+
+[MIT](https://tldrlegal.com/license/mit-license) © [Vishal Hasnani](https://github.com/Hasnanivishal)
 
 
 **Thanks for Installing**

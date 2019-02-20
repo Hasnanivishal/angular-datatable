@@ -13,6 +13,9 @@ export class DatatableComponent implements OnInit {
   @Input()
   itemPerPage: any;
 
+  @Input()
+  color: any;
+
   // pager object
   pager: any = {};
 
@@ -26,6 +29,7 @@ export class DatatableComponent implements OnInit {
   totalItems: any;
   index: any = 1;
   sortOrder: boolean;
+  bgColor: any = 'Black';
 
   constructor(private pagerService: PagerService) {
     this.currentPage = 1;
@@ -56,6 +60,8 @@ export class DatatableComponent implements OnInit {
   }
 
   setPage(page: number) {
+    this.bgColor = this.color;
+
     this.index = 1;
     this.data.forEach((element: { _index: number; }) => {
       element._index = this.index++;
