@@ -36,7 +36,7 @@
 
 | Input            | Type    | Required                   | Description                                                                                               |
 | ---------------- | ------- | -------------------------- | --------------------------------------------------------------------------------------------------------- |
-| sampleData            | object  | **YES**                    | array of objects that need to be shown in the data table .                                               |
+| data            | object  | **YES**                    | array of objects that need to be shown in the data table .                                               |
 | itemPerPage        | number  | Optional, default: 12     | items to be shown on each page.                                                                       |
 | color        | string  | Optional, default: Black     | set color of table header and button, [color list](https://www.w3schools.com/cssref/css_colors.asp)                                                                      |
 
@@ -83,7 +83,7 @@ import { AppService } from './app.service';
 @Component({
   selector: 'angDataTable',
   template: `
-  <ang-data-table [sampleData]='data' [itemPerPage]='dataPerPage' [color]='color'>
+  <ang-data-table [data]='data' [itemPerPage]='dataPerPage' [color]='color'>
 `,
   styleUrls: ['./app.component.css']
 })

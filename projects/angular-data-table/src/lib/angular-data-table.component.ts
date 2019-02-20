@@ -125,7 +125,7 @@ import { AngularDataTableService } from '../public_api';
 export class AngularDataTableComponent implements OnInit {
 
   @Input()
-  sampleData: any;
+  data: any;
 
   @Input()
   itemPerPage: any;
@@ -145,6 +145,7 @@ export class AngularDataTableComponent implements OnInit {
   currentPage: any;
   totalItems: any;
   index: any = 1;
+  sortOrder: boolean;
   bgColor: any = 'Black';
 
   constructor(private angularDataTableService: AngularDataTableService) {
@@ -153,35 +154,54 @@ export class AngularDataTableComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.totalItems = this.sampleData.length;
-      this.sampleData.forEach((element: { _index: number; }) => {
-        element._index = this.index++;
-      });
+      this.totalItems = this.data.length;
       this.setPage(1);
-      this.bgColor = this.color;
     });
   }
 
+  Sorting(fieldName: any, sortOrder: boolean) {
+    if (sortOrder) {
+      this.data.sort(function (objectOne: any, objectTwo: any) {
+        if (objectOne[fieldName] < objectTwo[fieldName]) { return -1; }
+        if (objectOne[fieldName] > objectTwo[fieldName]) { return 1; }
+        return 0;
+      });
+    } else {
+      this.data.sort(function (objectOne: any, objectTwo: any) {
+        if (objectOne[fieldName] > objectTwo[fieldName]) { return -1; }
+        if (objectOne[fieldName] < objectTwo[fieldName]) { return 1; }
+        return 0;
+      });
+    }
+    this.setPage(this.currentPage);
+  }
+
   setPage(page: number) {
+    this.bgColor = this.color;
+
+    this.index = 1;
+    this.data.forEach((element: { _index: number; }) => {
+      element._index = this.index++;
+    });
     // get pager object from service
-    this.pager = this.angularDataTableService.getPager(this.sampleData.length, page, this.itemPerPage);
+    this.pager = this.angularDataTableService.getPager(this.data.length, page, this.itemPerPage);
 
     // get current page of items
-    this.pagedItems = this.sampleData.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    this.pagedItems = this.data.slice(this.pager.startIndex, this.pager.endIndex + 1);
 
     // get object property name
-    this.propName = Object.getOwnPropertyNames(this.sampleData[0]);
+    this.propName = Object.getOwnPropertyNames(this.data[0]);
     this.propName.pop();
   }
 
-  loadMore() {
+  nextPage() {
     if (this.currentPage < this.pager.pages.length) {
       this.currentPage = this.currentPage + 1;
       this.setPage(this.currentPage);
     }
   }
 
-  loadLess() {
+  previousPage() {
     if (this.currentPage > 1) {
       this.currentPage = this.currentPage - 1;
       this.setPage(this.currentPage);
