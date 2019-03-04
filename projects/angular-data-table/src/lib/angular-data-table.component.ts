@@ -19,6 +19,7 @@ import { AngularDataTableService } from '../public_api';
   </div>
 </div> -->
 
+<div *ngIf="pagedItems">
 
 <div style="overflow-x:auto;">
   <table>
@@ -51,6 +52,7 @@ import { AngularDataTableService } from '../public_api';
   Page {{pager.currentPage}}
 </div>
 
+</div>
 
 <!-- CSS -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -154,8 +156,10 @@ export class AngularDataTableComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.totalItems = this.data.length;
-      this.setPage(1);
+      if (this.data && this.data.length > 0) {
+        this.totalItems = this.data.length;
+        this.setPage(1);
+      }
     });
   }
 
@@ -177,7 +181,9 @@ export class AngularDataTableComponent implements OnInit {
   }
 
   setPage(page: number) {
-    this.bgColor = this.color;
+    if (this.color) {
+      this.bgColor = this.color;
+    }
 
     this.index = 1;
     this.data.forEach((element: { _index: number; }) => {

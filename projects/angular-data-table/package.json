@@ -1,7 +1,7 @@
 {
   "name": "angular-data-table-library",
-  "version": "0.0.6", 
-  "description":"A simple datatable for Angular.",
+  "version": "1.0.0", 
+  "description":"DataTable for Angular 2+",
   "author": "Vishal Hasnani (hasnanivishal@gmail.com)",
   "repository": {
     "type": "git",
@@ -15,7 +15,13 @@
     "angular",
     "javascript",
     "typescript",
-    "datatable"
+    "datatable",
+    "data-table",
+    "angular 6",
+    "sorting",
+    "table",
+    "filter",
+    "angular 7"
   ],
   "license": "MIT",
   "peerDependencies": {

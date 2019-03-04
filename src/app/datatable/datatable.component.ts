@@ -37,8 +37,10 @@ export class DatatableComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.totalItems = this.data.length;
-      this.setPage(1);
+      if (this.data && this.data.length > 0) {
+        this.totalItems = this.data.length;
+        this.setPage(1);
+      }
     });
   }
 
@@ -60,7 +62,9 @@ export class DatatableComponent implements OnInit {
   }
 
   setPage(page: number) {
-    this.bgColor = this.color;
+    if (this.color) {
+      this.bgColor = this.color;
+    }
 
     this.index = 1;
     this.data.forEach((element: { _index: number; }) => {

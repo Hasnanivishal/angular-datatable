@@ -13,35 +13,39 @@
   </div>
 </div> -->
 
+<div *ngIf="pagedItems">
 
-<div style="overflow-x:auto;">
-  <table>
-    <thead>
-      <th *ngFor="let prop of propName | keyvalue" [style.background-color]="bgColor">
-        {{ prop.value | titlecase  }} <i class="fa fa-sort" (click)="Sorting(prop.value, !sortOrder)" (click)="sortOrder = !sortOrder"></i></th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of pagedItems ">
-        <td *ngFor="let prop of propName"> {{ item[prop] }} </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
-<br />
-<div class="header" style="overflow-x:auto;">
-  <div class="two" *ngIf="pagedItems">Showing {{pagedItems[0]._index}} to
-    {{pagedItems[pagedItems.length-1]._index}} of
-    {{totalItems}} entries</div>
-
-  <div class="one" *ngIf="pager.pages && pager.pages.length > 1">
-    <button class="button button2" [style.background-color]="bgColor" (click)="previousPage()">Previous</button>
-    <button class="button button2" [style.background-color]="bgColor" (click)="nextPage()">Next</button>
+  <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <th *ngFor="let prop of propName | keyvalue" [style.background-color]="bgColor">
+          {{ prop.value | titlecase }} <i class="fa fa-sort" (click)="Sorting(prop.value, !sortOrder)" (click)="sortOrder = !sortOrder"></i></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of pagedItems ">
+          <td *ngFor="let prop of propName"> {{ item[prop] }} </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
 
-<div class="center">
-  Page {{pager.currentPage}}
+  <br />
+  <div class="header" style="overflow-x:auto;">
+    <div class="two" *ngIf="pagedItems">Showing {{pagedItems[0]._index}} to
+      {{pagedItems[pagedItems.length-1]._index}} of
+      {{totalItems}} entries</div>
+
+    <div class="one" *ngIf="pager.pages && pager.pages.length > 1">
+      <button class="button button2" [style.background-color]="bgColor" (click)="previousPage()">Previous</button>
+      <button class="button button2" [style.background-color]="bgColor" (click)="nextPage()">Next</button>
+    </div>
+  </div>
+
+  <div class="center">
+    Page {{pager.currentPage}}
+  </div>
+
 </div>
 
 
