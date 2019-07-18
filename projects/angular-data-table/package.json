@@ -1,6 +1,6 @@
 {
   "name": "angular-data-table-library",
-  "version": "1.0.0", 
+  "version": "1.0.2", 
   "description":"DataTable for Angular 2+",
   "author": "Vishal Hasnani (hasnanivishal@gmail.com)",
   "repository": {

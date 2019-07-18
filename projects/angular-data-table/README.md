@@ -14,14 +14,15 @@
   </a>
 </p>
 
-* A simple datatable that can be used in your component.
+* Component for creating data table for array of objects.
 * It is developed using `Angular >=7.0.0` and its newly introduced `ng g library` schematics.
 * Library location: `projects/angular-data-table` directory of this repository.
 
 ## Examples/Demo
 
-* A simple Example can be found under `src/app` directory of this repository.
-* Live Demo [Example](https://stackblitz.com/edit/angular-m3yj64)
+ Live Demo [Example](https://stackblitz.com/edit/angular-m3yj64)
+
+ ![angular-data-table](https://i.stack.imgur.com/kGE54.png)
 
 ## Installation
 
@@ -43,53 +44,30 @@
 
 ## Usage
 
-1) Register the `AngularDataTableModule` in your app module.
- > `import { AngularDataTableModule } from 'angular-data-table-library'`
+* Register the `AngularDataTableModule` in module.
 
  ```typescript
- import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule, MatInputModule } from '@angular/material';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularDataTableModule } from 'angular-data-table-library';
-import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    HttpClientModule,
-    AngularDataTableModule
-  ],
+  declarations: [],
+  imports: [ AngularDataTableModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule {}
  ```
 
- 2) Use the directive `(ang-data-table)` in your component.
+* Use of component via selector 'ang-data-table'.
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { AppService } from './app.service';
+
 @Component({
   selector: 'angDataTable',
-  template: `
-  <ang-data-table [data]='data' [itemPerPage]='dataPerPage' [color]='color'>
-`,
-  styleUrls: ['./app.component.css']
+  template: `<ang-data-table [data]='data' [itemPerPage]='dataPerPage' [color]='color'>`,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
  
-
   ngOnInit() {
     let data = {
           [key1: value, key2: value],
@@ -99,8 +77,8 @@ export class AppComponent implements OnInit {
     let dataPerPage = 6;
     let color = 'Blue';
   }
-
 }
+
 ```
 
 ## Test
